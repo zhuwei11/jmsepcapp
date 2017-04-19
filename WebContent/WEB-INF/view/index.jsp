@@ -7,8 +7,7 @@
 <title>epc测试页</title>
 </head>
 <body>
-	<h2>测试</h2><b>当前用户id:${account.id},余额:${account.balance}</b>	
-<a href="rechage/${account.id}">并发充值</a><br><br>
-<a href="withdraw/${account.id}">并发提现</a><br><br>
+	<h2>测试</h2><b>发送充值请求消息:</b>	
+<a href="rechage/${account.id}">发送</a><br><br>
 </body>
 </html>
