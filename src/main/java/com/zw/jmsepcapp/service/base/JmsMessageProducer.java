@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.jms.Queue;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.zw.jmsepcapp.silkie.jms.AppInfo;

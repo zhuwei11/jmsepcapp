@@ -34,7 +34,7 @@ public class DefaultAccountFund implements AccountFund {
 
 	private static final Logger LOG = Logger.getLogger(DefaultAccountFund.class);
 	@Resource
-	private JmsMessageProducer traderEventProducer;
+	private JmsMessageProducer jmsMessageProducer;
 	
 	@Override
 	public Result recharge(int tenantId, int memberId, int rechargeId) {
@@ -45,7 +45,7 @@ public class DefaultAccountFund implements AccountFund {
 			p120010.setTenantId(tenantId);
 			p120010.setMemberId(memberId);
 			p120010.setRechargeId(rechargeId);
-			JmsEventParam param = traderEventProducer.sendRequestMessage(EpcTidConstant.T320011, p120010);
+			JmsEventParam param = jmsMessageProducer.sendRequestMessage(EpcTidConstant.T320011, p120010);
 			if(param == null) {
 				resultCode = new ResultCode(ResultCode.SUCCESS, "帐户充值已提交,正在处理中");
 			} else {
@@ -69,7 +69,7 @@ public class DefaultAccountFund implements AccountFund {
 			P120020 p120020 = new P120020();
 			p120020.setTenantId(tenantId);
 			p120020.setMemberId(memberId);
-			JmsEventParam param = traderEventProducer.sendRequestMessage(EpcTidConstant.T320021, p120020);
+			JmsEventParam param = jmsMessageProducer.sendRequestMessage(EpcTidConstant.T320021, p120020);
 			if(param == null) {
 				resultCode = new ResultCode(ResultCode.SUCCESS, "帐户充值已提交,正在处理中");
 			} else {

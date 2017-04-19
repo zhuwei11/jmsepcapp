@@ -30,6 +30,10 @@ import com.zw.jmsepcapp.silkie.jms.message.P999999;
  */
 public class DefaultJmsMessageHandler extends BaseJmsMessageHandler {
 	
+	static {
+		System.out.println("------------我被创建了一次------------------");
+	}
+	
 	private final static Logger LOG = LoggerFactory.getLogger(DefaultJmsMessageHandler.class); 
 
 	private DefaultJmsTemplate jmsTemplate;

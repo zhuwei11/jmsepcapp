@@ -5,25 +5,20 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.Lifecycle;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.stereotype.Service;
 
 import com.zw.jmsepcapp.silkie.jms.DefaultJmsMessageListenerContainer;
+import com.zw.jmsepcapp.spring.SpringBeanManager;
 
 
-@Service
 public class MyListener implements ServletContextListener {
 	DefaultJmsMessageListenerContainer traderResponseListenerContainer;
 	
 	private static Logger logger = Logger.getLogger(MyListener.class);
 	public void contextInitialized(ServletContextEvent evt) {
+		ApplicationContext ctx = new FileSystemXmlApplicationContext("classpath:spring-context.xml");
+    	SpringBeanManager.initContext(ctx);
 		logger.info("ApplicationListener Starting...............................");
-//		@SuppressWarnings("resource")
-//		ApplicationContext ac = new FileSystemXmlApplicationContext("classpath:spring-context.xml");
-//		Lifecycle traderResponseListenerContainer = (DefaultJmsMessageListenerContainer) ac.getBean("traderResponseListenerContainer");
-//		traderResponseListenerContainer.start();
-		System.out.println("activemq监听启动");
 	}
 	
 	@Override
